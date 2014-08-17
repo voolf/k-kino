@@ -1,0 +1,55 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html>
+<head lang="rus">
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="{% static "css/foundation.css" %}">
+    <link rel="stylesheet" type="text/css" href="{% static "css/custom.css" %}">
+    <title>К — КИНО</title>
+</head>
+<body class="row">
+
+<div class="top-bar">
+    <section class="top-bar-section ">
+        <ul>
+            <li><a href="/" >K — КИНО</a></li>
+            <li><a href="/film/">Фильмы</a> </li>
+            <li><a href="/about/">О проекте</a> </li>
+        </ul>
+        <ul class="right">
+            {% if username %}
+                {% if title == 'film' %}
+                     <li><a href="/film/addfilm">добавить фильм</a> </li>
+                {% endif %}
+
+                {% if is_superUser and title == 'article' %}
+                    <li><a href="/articles/addarticle">добавить новость</a> </li>
+                {% endif %}
+                <li><a href="/auth/logout"> выйти из {{ username }}</a> </li>
+
+
+            {% else %}
+
+                <li><a href="/auth/register">Регистрация</a> </li>
+                <li><a href="/auth/login">войти</a> </li>
+            {% endif %}
+        </ul>
+    </section>
+
+</div>
+
+<div >
+
+    {% block article %}{% endblock %}
+    {% block films_view %}{% endblock %}
+    {% block login %}{% endblock %}
+    {% block image %}{% endblock %}
+
+</div>
+
+<hr>
+<div class="down">
+    <p><a href="http://vk.com/cashka">Клыгач Александр</a> </p>
+</div>
+</body>
+</html>
