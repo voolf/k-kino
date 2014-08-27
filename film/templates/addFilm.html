@@ -7,12 +7,20 @@
     <form action="/film/addfilm" method="post">
         {% csrf_token %}
 
+        {{ film_form }}
 
-        <label for="name_film">Название фильма:</label>
+
+        <label for="name_film">Название фильма*:</label>
         <input type="text" name="film_name" id="film_name" >
 
-        <label for="text">Сслыка ролика (youtube.com, vimeo.com): </label>
+        <label for="text">Сслыка ролика (youtube.com, vimeo.com)*: </label>
         <input type="text" name="film_sided_id" id="film_sided_id">
+
+        <label for="text">Краткое описание фильма*: </label>
+        <input type="text" name="film_text" id="film_text">
+
+                 <label for="text">Жанр*: </label>
+        <input type="text" name="film_genre" id="film_genre">
 
          <label for="text">Создатели фильма: </label>
         <input type="text" name="film_created_users" id="film_created_users">
@@ -20,14 +28,10 @@
          <label for="text">Год выпуска: </label>
           <input type="text" name="film_year" id="film_year">
 
-         <label for="text">Жанр: </label>
-        <input type="text" name="film_genre" id="film_genre">
 
          <label for="text">Награды: </label>
         <input type="text" name="film_award" id="film_award">
 
-        <label for="text">Краткое описание фильма: </label>
-        <input type="text" name="film_text" id="film_text">
 
         <input type="submit" class="bottom" value="Сохранить">
     </form>

@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 """
 Django settings for KmKProject project.
 
@@ -36,11 +37,11 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    #'django.contrib.flatpages',# работа со статичными страницами
     'article',
     'loginsys',
     'film',
     'south',
-    'image',
     #'social_auth',
     # 'sorl.thumbnail',
     # 'imagekit',
@@ -59,6 +60,8 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    #'django.contrib.flatpages.middleware.FlatpageFallbackMiddleware',
+    # работа со статичными страницами
 
 )
 
@@ -98,6 +101,11 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
+MEDIA_ROOT = os.path.join(BASE_DIR,  'media')
+
+MEDIA_URL = '/media/'
+
+IMAGE_UPLOAD_DIR = os.path.join(BASE_DIR,  'media/filmImg')
 
 # может быть писать сюда полный адресс шаблоноы
 

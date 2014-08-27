@@ -7,7 +7,7 @@
      <p>{{ article.article_user }}</p>
      <p><a href="/articles/like/{{ article.id }}"><img src="{% static "gr.jpg" %}"></a>:{{ article.article_likes }}</p>
     {% if is_superUser == 1 %}
-    <p><a href="/articles/editarticle/{{ article.id }}"> редактировать новость</a></p>
+    <p><a href="/articles/editarticle/{{ article.id }}"> редактировать новость</a> || <a href="/articles/delete/{{ article.id }}"> удалить новость</a></p>
 {% endif %}
      <hr>
      <p>Комментарии:</p>
@@ -47,7 +47,7 @@
     {% if username %}
     <form action="/articles/addcomment/{{ article.id }}" method="post">
     {% csrf_token %}
-    {{ form }}
+    {{ comment_form }}
     <input type="submit" class="bottom" value="Добавить комментарий">
     </form>
     {% endif %}

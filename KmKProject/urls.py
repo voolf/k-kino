@@ -13,6 +13,7 @@ urlpatterns = patterns('',
     url(r'basic/', include('article.urls')),
     url(r'^auth/', include('loginsys.urls')),
     url(r'^film/', include('film.urls')),
-    url(r'^', include('article.urls')),
+    url(r'^articles/', include('article.urls')),
+    url(r'^', 'film.views.indexFilm'),
 
 )

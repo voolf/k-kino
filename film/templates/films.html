@@ -2,19 +2,30 @@
 {% load staticfiles %}
 {% block films_view %}
 
-    <div class="columns">
+
+<script>
+
+
+</script>
     <br>
     {% for film in films %}
-        <div class="linkblock" onclick="location.href='/film/get/{{ film.id }}'">
-        <a href="/film/get/{{ film.id}}">{{ film.film_name }}</a>
-        <p>{{ film.film_text }}</p>
-        <h0>{{ username }} || {{ film.film_date_public }} || {{ film.film_like }}</h0>
-        </div>
+         <div class="news">
+
+        <div  onclick="location.href='/film/get/{{ film.id }}'">
+
+        <h2>{{ film.film_name }}</h2>
+        <img id="img" src="http://img.youtube.com/vi/{{ film.film_sided_id }}/maxresdefault.jpg">
         <hr>
+        <p>{{ film.film_created_users }} || {{ film.film_date_public }} <br> Понравилось: {{ film.film_like }}</p>
+
+        </div>
+
+        </div>
+
 
 
     {% endfor %}
 
-    </div>
+
 
 {% endblock %}

@@ -21,12 +21,23 @@ def template_three(request):
 # все новости
 # работа с базой
 # пагинаторы
-
+def freeDateArticles (col):
+    all_articles = Article.objects.all()
+    current_page = all_articles.order_by("-article_date")[0:col]
+    return current_page
 
 def articles (request, page_number = 1):
     all_articles = Article.objects.all()
     current_page = Paginator(all_articles, 4)
-    return render_to_response('articles.html', {'title':'article', 'articles':current_page.page(page_number), 'username': auth.get_user(request).username, 'is_superUser' : auth.get_user(request).is_superuser})
+    args = {}
+    args.update(csrf(request))
+    args['articleForm'] = ArticleForm
+    args['title'] = 'article'
+    args['articles'] = current_page.page(page_number)
+    args['username'] = auth.get_user(request).username
+    args['is_superUser'] = auth.get_user(request).is_superuser
+
+    return render_to_response('articles.html', args)
 
 # читать новость
 # работа с базой и с формой коментариев
@@ -39,7 +50,7 @@ def article (request, article_id, comments_page_number=1):
     all_comments = Comments.objects.filter(comments_article_id = article_id)
     current_page_comments = Paginator(all_comments, 4)
     arqs['comments'] = current_page_comments.page(comments_page_number)
-    arqs['form'] = comment_form
+    arqs['comment_form'] = comment_form
     arqs['username'] = auth.get_user(request).username
     arqs['is_superUser'] = auth.get_user(request).is_superuser
     return render_to_response('article.html', arqs)
@@ -62,7 +73,7 @@ def editArticle(request, article_id):
                 article_edit.article_user_id = auth.get_user(request).id
                 article_edit.article_date = datetime.datetime.today()
                 form.save()
-                return redirect('/articles/get/%s' %article_id)
+                return redirect('/articles/get/'+str(article_edit.id))
             else:
                 arqs['error'] = "huina"
                 #return redirect('/',arqs)
@@ -84,7 +95,7 @@ def addArticle (request):
     arqs['is_superUser'] = auth.get_user(request).is_superuser
     if auth.get_user(request).is_superuser == 1:
         if request.POST:
-            form = ArticleForm(request.POST)
+            form = ArticleForm(request.POST) #в скобка пишется при загрузке файлов request.FILES
             if form.is_valid():
                 article_add = form.save(commit=False)
                 # article_add.article_title = Article.objects.get(request).article_title
@@ -92,7 +103,7 @@ def addArticle (request):
                 article_add.article_user_id = auth.get_user(request).id
                 article_add.article_date = datetime.datetime.today()
                 form.save()
-                return redirect('/')
+                return redirect('/articles/get/'+str(article_add.id))
             else:
                 arqs['error'] = "huina"
                 # return redirect('/',arqs)
@@ -135,4 +146,15 @@ def like (request, article_id):
             return response
     except ObjectDoesNotExist:
         raise Http404
-    return redirect('/#')
+    return redirect('/')
+
+def delArticle(request, article_id):
+    if auth.get_user(request).is_superuser:
+
+        delete_article = Article.objects.get(id = article_id)
+        delete_comments_article = Comments.objects.filter(comments_article_id = article_id)
+        delete_article.delete()
+        delete_comments_article.delete()
+        return redirect('/')
+    else:
+        return render_to_response('error.html', {'error':'delete_article'})

@@ -31,3 +31,77 @@
     text-align: center;
     font: 12px Arial;
 }
+
+.news {
+	width: 470px;
+	margin-top: 10px;
+	margin-left: 20px;
+	margin-bottom: 10px;
+	padding-top: 15px;
+	padding-right: 20px;
+	padding-left: 20px;
+	padding-bottom: 0px;
+	background: #ffffff;
+	border: 1px solid #eeeeee;
+	display: inline-block;
+	float: left;
+	border-radius: 5px;
+	border-bottom: 3px solid #dedede;
+}
+
+#img{
+    width: 428px;
+    height: 241px;
+}
+.news:hover {
+	background-color: #f7f7f7;
+}
+/* ------------------ NEWS HERE -------------------*/
+.news .text {
+	width: 470px;
+	margin: 20px;
+	padding: 15px;
+	background: #f7f7f7;
+	border: 1px solid #eeeeee;
+	display: inline-block;
+	float: left;
+}
+.news h2 {
+	font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+	font-size: 28px;
+	color: #666666;
+	padding: 0 0 0px 0;
+	font-weight: normal;
+}
+.news p {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	color: #666666;
+	line-height: 20px;
+	padding-top: 0;
+	padding-right: 0;
+	padding-left: 0;
+}
+.news p span {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	color: #333333;
+	line-height: 20px;
+	display: block;
+}
+.news p span a {
+	text-decoration: underline;
+}
+.news p span a:hover {
+	text-decoration: none;
+}
+
+.content {
+	width: 980px;
+	margin-top: 0;
+	margin-right: auto;
+	margin-left: auto;
+	float: left;
+	padding-bottom: 5px;
+}
+
