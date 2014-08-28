@@ -9,8 +9,8 @@
          <div onclick="location.href='/articles/get/{{ article.id }}'">
      <a href="/articles/get/{{ article.id }}"> {{ article.article_title }}</a>
      <p>{{ article.article_user }} || {{ article.article_date }}</p>
-     <p></p>
-     <a href="/articles/like/{{ article.id }}"><img src="{% static "gr.jpg" %}"></a>: {{ article.article_likes }}
+
+     <p><a href="/articles/like/{{ article.id }}"><img src="{% static "gr.jpg" %}"></a>: {{ article.article_likes }}</p>
         </div>
       </div>
  {% endfor %}
