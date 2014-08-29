@@ -13,7 +13,7 @@
 
         <div  onclick="location.href='/film/get/{{ film.id }}'">
 
-        <h2>{{ film.film_name }}</h2>
+        <h2>{{ film.film_name|truncatechars:"30" }}</h2>
         <img id="img" src="http://img.youtube.com/vi/{{ film.film_sided_id }}/maxresdefault.jpg">
         <hr>
         <p>{{ film.film_created_users }} || {{ film.film_date_public }} <br> Понравилось: {{ film.film_like }}</p>

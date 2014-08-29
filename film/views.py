@@ -10,6 +10,7 @@ from django.core.paginator import Paginator
 from film.forms import FilmForm, Film_comment_Form
 import datetime, article.views
 
+
 # Create your views here.
 
 def indexFilm(request):

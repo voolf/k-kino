@@ -7,8 +7,52 @@
     <form action="/film/addfilm" method="post">
         {% csrf_token %}
 
+        <label for="name_film">Название фильма:</label>
+        <input type="text" name="film_name" id="film_name">
 
-       {{ film_form }}
+        <label for="text">Сслыка ролика (youtube.com, vimeo.com): </label>
+        <input type="text" name="film_sided_id" id="film_sided_id">
+
+        <label form="text">Жанр</label>
+        <select id="id_film_jenres" name="film_jenres">
+        <option value="" selected="selected">---------</option>
+        <option value="1">Боевик</option>
+        <option value="2">Документальный</option>
+        <option value="3">Драма</option>
+        <option value="4">Комедия</option>
+        <option value="5">Триллер</option>
+        <option value="6">Приключения</option>
+        <option value="7">Фантастика</option>
+        <option value="8">Ужасы</option>
+        <option value="9">История</option>
+        <option value="10">Документальный</option>
+        <option value="11">Мелодрама</option>
+        <option value="12">Фэнтези</option>
+        <option value="13">Криминал</option>
+        <option value="14">Семья</option>
+        <option value="15">Анимэ</option>
+        <option value="16">Биография</option>
+        <option value="17">Музыка</option>
+        <option value="18">Детектив</option>
+        <option value="19">Военный</option>
+        <option value="20">Спорт</option>
+        <option value="21">Вестерн</option>
+        <option value="22">Мультфильм</option>
+        <option value="23">Реклама</option>
+    </select>
+        <label for="text">Создатели фильма: </label>
+        <input type="text" name="film_created_users" id="film_created_users">
+
+        <label for="text">Год выпуска: </label>
+        <input type="number" name="film_year" id="film_year">
+
+
+        <label for="text">Награды: </label>
+        <input type="text" name="film_award" id="film_award">
+
+        <label for="text">Краткое описание фильма: </label>
+        <input type="text" name="film_text" id="film_text">
+
 
 
         <input type="submit" class="button" value="Сохранить">
